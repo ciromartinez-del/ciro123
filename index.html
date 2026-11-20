@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelCraft | Tienda Gamer & Retro</title>
+    <!-- Tipografía moderna de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header class="navbar">
+        <div class="logo-container">
+            <!-- Logo propio hecho con SVG -->
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+                <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                <path d="M6 12h4"></path>
+                <path d="M8 10v4"></path>
+                <line x1="15" y1="13" x2="15.01" y2="13"></line>
+                <line x1="18" y1="11" x2="18.01" y2="11"></line>
+            </svg>
+            <h1>Pixel<span>Craft</span></h1>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar productos...">
+        </div>
+
+        <div class="nav-actions">
+            <button id="themeToggle" class="icon-btn" title="Cambiar tema">🌙</button>
+            <button id="favFilterBtn" class="icon-btn" title="Ver favoritos">❤️ <span id="favCount">0</span></button>
+            <button id="cartBtn" class="cart-btn">
+                🛒 Carrito (<span id="cartCount">0</span>)
+            </button>
+        </div>
+    </header>
+
+    <!-- FILTROS DE CATEGORÍA Y PRECIO -->
+    <section class="filters-section">
+        <div class="categories" id="categoryButtons">
+            <button class="cat-btn active" data-category="todos">Todos</button>
+            <button class="cat-btn" data-category="consolas">Consolas</button>
+            <button class="cat-btn" data-category="perifericos">Periféricos</button>
+            <button class="cat-btn" data-category="accesorios">Accesorios</button>
+        </div>
+
+        <div class="sort-filter">
+            <label for="sortSelect">Ordenar por:</label>
+            <select id="sortSelect">
+                <option value="default">Destacados</option>
+                <option value="price-asc">Menor precio</option>
+                <option value="price-desc">Mayor precio</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- GRILLA DE PRODUCTOS -->
+    <main class="products-container" id="productsGrid">
+        <!-- Los productos se cargan dinámicamente desde JavaScript -->
+    </main>
+
+    <!-- CARRITO LATERAL (DRAWER) -->
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Tu Carrito</h2>
+            <button id="closeCartBtn" class="close-btn">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <!-- Items del carrito -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="discount-box">
+                <input type="text" id="discountInput" placeholder="Código: DESCUENTO10">
+                <button id="applyDiscountBtn">Aplicar</button>
+            </div>
+            <div class="totals">
+                <p>Subtotal: $<span id="cartSubtotal">0</span></p>
+                <p class="discount-text" id="discountRow" style="display: none;">Descuento (10%): -$<span id="cartDiscount">0</span></p>
+                <h3>Total: $<span id="cartTotal">0</span></h3>
+            </div>
+            <button id="checkoutBtn" class="primary-btn full-width">Finalizar Compra</button>
+        </div>
+    </aside>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- MODAL DE SIMULACIÓN DE COMPRA -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModalBtn">&times;</span>
+            <h2>Finalizar Pedido</h2>
+            <form id="checkoutForm">
+                <label>Nombre completo</label>
+                <input type="text" required placeholder="Ej: Alex Rivera">
+                <label>Correo electrónico</label>
+                <input type="email" required placeholder="alex@email.com">
+                <label>Dirección de envío</label>
+                <input type="text" required placeholder="Av. Siempre Viva 742">
+                <label>Método de pago</label>
+                <select required>
+                    <option value="tarjeta">Tarjeta de Crédito / Débito</option>
+                    <option value="transferencia">Transferencia Bancaria</option>
+                </select>
+                <button type="submit" class="primary-btn full-width">Confirmar Pago ($<span id="modalTotal">0</span>)</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN FLOTANTE (TOAST) -->
+    <div id="toast" class="toast">Acción realizada</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
